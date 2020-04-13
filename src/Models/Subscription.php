@@ -2,9 +2,9 @@
 
 namespace Faithgen\Miscellaneous\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use FaithGen\SDK\Models\UuidModel;
 
-class Subscription extends Model
+class Subscription extends UuidModel
 {
-    //
+    protected $table = 'fg_subscriptions';
 }

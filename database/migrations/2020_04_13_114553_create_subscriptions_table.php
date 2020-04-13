@@ -13,8 +13,10 @@ class CreateSubscriptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subscriptions', function (Blueprint $table) {
-            $table->id();
+        Schema::create('fg_subscriptions', function (Blueprint $table) {
+            $table->string('id', 150)->primary();
+            $table->string('email')->unique();
+            $table->boolean('confirmed')->default(false);
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateSubscriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscriptions');
+        Schema::dropIfExists('fg_subscriptions');
     }
 }
