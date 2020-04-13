@@ -16,7 +16,7 @@ class SubscriptionObserver
      */
     public function created(Subscription $subscription)
     {
-        $subscription->notify(new ApproveSubscription($subscription));
+        $subscription->notify(new ApproveSubscription());
     }
 
     /**

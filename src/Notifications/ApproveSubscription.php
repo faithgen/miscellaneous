@@ -11,25 +11,16 @@ use Illuminate\Notifications\Notification;
 class ApproveSubscription extends Notification implements ShouldQueue
 {
     use Queueable;
-    /**
-     * @var Subscription
-     */
-    private Subscription $subscription;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @param  Subscription  $subscription
-     */
-    public function __construct(Subscription $subscription)
+    public function __construct()
     {
-        $this->subscription = $subscription;
     }
 
     /**
      * Get the notification's delivery channels.
      *
      * @param  mixed  $notifiable
+     *
      * @return array
      */
     public function via($notifiable)
@@ -41,20 +32,22 @@ class ApproveSubscription extends Notification implements ShouldQueue
      * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable
+     *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('You are receiving this notification because you are subscribing to FaithGen.')
-                    ->action('Approve Subscription', url("/api/subscriptions/{$this->subscription->id}/{$this->subscription->email}"))
-                    ->line('Thank you for using our application!');
+            ->line('You are receiving this notification because you are subscribing to FaithGen.')
+            ->action('Approve Subscription', url("/api/subscriptions/{$notifiable->id}/{$notifiable->email}"))
+            ->line('Thank you for using our application!');
     }
 
     /**
      * Get the array representation of the notification.
      *
      * @param  mixed  $notifiable
+     *
      * @return array
      */
     public function toArray($notifiable)
