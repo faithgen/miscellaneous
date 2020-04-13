@@ -2,6 +2,7 @@
 
 namespace Faithgen\Miscellaneous;
 
+use Faithgen\Miscellaneous\Services\ContactService;
 use FaithGen\SDK\Traits\ConfigTrait;
 use Illuminate\Support\ServiceProvider;
 
@@ -40,6 +41,8 @@ class MiscellaneousServiceProvider extends ServiceProvider
         $this->app->singleton('miscellaneous', function () {
             return new Miscellaneous;
         });
+
+        $this->app->singleton(ContactService::class);
     }
 
     /**
