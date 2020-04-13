@@ -2,10 +2,12 @@
 
 namespace Faithgen\Miscellaneous;
 
+use FaithGen\SDK\Traits\ConfigTrait;
 use Illuminate\Support\ServiceProvider;
 
 class MiscellaneousServiceProvider extends ServiceProvider
 {
+    use ConfigTrait;
     /**
      * Bootstrap the application services.
      */
@@ -19,6 +21,10 @@ class MiscellaneousServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../config/config.php' => config_path('miscellaneous.php'),
             ], 'misc-config');
+
+            $this->publishes([
+                __DIR__.'/../database/migrations/' => database_path('migrations'),
+            ], 'miscellaneous-migrations');
         }
     }
 
@@ -34,5 +40,16 @@ class MiscellaneousServiceProvider extends ServiceProvider
         $this->app->singleton('miscellaneous', function () {
             return new Miscellaneous;
         });
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function routeConfiguration(): array
+    {
+        return [
+            'prefix' => config('miscellaneous.prefix'),
+            'middleware' => config('miscellaneous.middlewares'),
+        ];
     }
 }
