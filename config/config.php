@@ -7,7 +7,7 @@ return [
     /**
      * The Prefix to the gallery routes.
      */
-    'prefix' => 'api',
+    'prefix'      => 'api',
 
     /**
      * add more middlewares here if any.
@@ -16,4 +16,9 @@ return [
         'api',
         'bindings', //used for route model binding
     ],
+
+    /**
+     * Link to goto on successful subscription.
+     */
+    'success-subscription-url' => 'http://localhost:8000/subscription-success/',
 ];

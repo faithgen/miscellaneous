@@ -18,4 +18,5 @@ Route::prefix('faqs')
 Route::prefix('subscriptions')
     ->group(function () {
         Route::post('', [SubscriptionController::class, 'create']);
+        Route::get('{subscription}/{email}', [SubscriptionController::class, 'approveSubscription']);
     });
