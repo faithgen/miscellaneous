@@ -28,7 +28,7 @@ class SubscriptionCreateRequest extends FormRequest
         ];
     }
 
-    function messages()
+    public function messages()
     {
         return [
             'email.unique' => 'This email address has already been subscribed',

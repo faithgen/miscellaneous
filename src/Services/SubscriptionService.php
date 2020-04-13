@@ -20,7 +20,7 @@ class SubscriptionService extends CRUDServices
     }
 
     /**
-     * Retrieves an instance of subscription
+     * Retrieves an instance of subscription.
      */
     public function getSubscription(): Subscription
     {
@@ -29,8 +29,8 @@ class SubscriptionService extends CRUDServices
 
     /**
      * Makes a list of fields that you do not want to be sent
-     * to the create or update methods
-     * Its mainly the fields that you do not have in the subscriptions table
+     * to the create or update methods.
+     * Its mainly the fields that you do not have in the subscriptions table.
      */
     public function getUnsetFields()
     {
@@ -39,7 +39,7 @@ class SubscriptionService extends CRUDServices
 
     /**
      * This returns the model found in the constructor
-     * or an instance of the class if no subscription is found
+     * or an instance of the class if no subscription is found.
      */
     public function getModel()
     {
@@ -47,8 +47,8 @@ class SubscriptionService extends CRUDServices
     }
 
     /**
-     * Attaches a parent to the current subscription
-     * You can delete this if you do not intent to create subscriptions from parent relationships
+     * Attaches a parent to the current subscription.
+     * You can delete this if you do not intent to create subscriptions from parent relationships.
      */
     public function getParentRelationship()
     {

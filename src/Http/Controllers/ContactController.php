@@ -18,7 +18,7 @@ class ContactController extends Controller
      *
      * @param  ContactService  $contactService
      */
-    function __construct(ContactService $contactService)
+    public function __construct(ContactService $contactService)
     {
         $this->contactService = $contactService;
     }

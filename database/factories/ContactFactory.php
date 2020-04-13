@@ -10,6 +10,6 @@ $factory->define(Contact::class, function (Faker $faker) {
         'first_name'=>$faker->firstName,
         'last_name'=>$faker->lastName,
         'email' => $faker->safeEmail,
-        'query' => $faker->sentence(50)
+        'query' => $faker->sentence(50),
     ];
 });

@@ -53,7 +53,7 @@ class MiscellaneousServiceProvider extends ServiceProvider
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function routeConfiguration(): array
     {
