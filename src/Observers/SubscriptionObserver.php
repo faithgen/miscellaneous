@@ -3,6 +3,7 @@
 namespace Faithgen\Miscellaneous\Observers;
 
 use Faithgen\Miscellaneous\Models\Subscription;
+use Faithgen\Miscellaneous\Notifications\ApproveSubscription;
 
 class SubscriptionObserver
 {
@@ -15,7 +16,7 @@ class SubscriptionObserver
      */
     public function created(Subscription $subscription)
     {
-        //
+        $subscription->notify(new ApproveSubscription($subscription));
     }
 
     /**

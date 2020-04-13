@@ -52,9 +52,6 @@ class MiscellaneousServiceProvider extends ServiceProvider
         $this->app->singleton(SubscriptionService::class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function routeConfiguration(): array
     {
         return [
