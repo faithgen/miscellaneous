@@ -2,7 +2,6 @@
 
 namespace Faithgen\Miscellaneous\Notifications;
 
-use Faithgen\Miscellaneous\Models\Subscription;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
