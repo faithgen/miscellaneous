@@ -14,7 +14,7 @@ class MiscellaneousServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->registerRoutes(__DIR__.'/../routes/miscellaneous.php', null);
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
