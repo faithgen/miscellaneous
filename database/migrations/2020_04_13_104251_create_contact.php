@@ -14,7 +14,12 @@ class CreateContact extends Migration
     public function up()
     {
         Schema::create('fg_contact', function (Blueprint $table) {
-            $table->id();
+            $table->string('id', 150)->primary();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email')->nullable();
+            $table->text('query');
+            $table->boolean('read')->default(false);
             $table->timestamps();
         });
     }
