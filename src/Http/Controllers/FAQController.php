@@ -8,6 +8,11 @@ use Illuminate\Routing\Controller;
 
 class FAQController extends Controller
 {
+    /**
+     * Fetches the FAQs.
+     *
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function index()
     {
         $faqs = FAQ::latest()
