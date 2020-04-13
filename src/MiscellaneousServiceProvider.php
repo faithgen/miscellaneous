@@ -3,6 +3,7 @@
 namespace Faithgen\Miscellaneous;
 
 use Faithgen\Miscellaneous\Services\ContactService;
+use Faithgen\Miscellaneous\Services\SubscriptionService;
 use FaithGen\SDK\Traits\ConfigTrait;
 use Illuminate\Support\ServiceProvider;
 
@@ -43,6 +44,7 @@ class MiscellaneousServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton(ContactService::class);
+        $this->app->singleton(SubscriptionService::class);
     }
 
     /**
