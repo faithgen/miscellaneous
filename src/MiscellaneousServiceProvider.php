@@ -2,6 +2,8 @@
 
 namespace Faithgen\Miscellaneous;
 
+use Faithgen\Miscellaneous\Models\Subscription;
+use Faithgen\Miscellaneous\Observers\SubscriptionObserver;
 use Faithgen\Miscellaneous\Services\ContactService;
 use Faithgen\Miscellaneous\Services\SubscriptionService;
 use FaithGen\SDK\Traits\ConfigTrait;
@@ -10,6 +12,7 @@ use Illuminate\Support\ServiceProvider;
 class MiscellaneousServiceProvider extends ServiceProvider
 {
     use ConfigTrait;
+
     /**
      * Bootstrap the application services.
      */
@@ -28,6 +31,8 @@ class MiscellaneousServiceProvider extends ServiceProvider
                 __DIR__.'/../database/migrations/' => database_path('migrations'),
             ], 'miscellaneous-migrations');
         }
+
+        Subscription::observe(SubscriptionObserver::class);
     }
 
     /**
@@ -53,7 +58,7 @@ class MiscellaneousServiceProvider extends ServiceProvider
     public function routeConfiguration(): array
     {
         return [
-            'prefix' => config('miscellaneous.prefix'),
+            'prefix'     => config('miscellaneous.prefix'),
             'middleware' => config('miscellaneous.middlewares'),
         ];
     }
