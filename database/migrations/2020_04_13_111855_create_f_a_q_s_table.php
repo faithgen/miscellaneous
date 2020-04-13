@@ -14,7 +14,10 @@ class CreateFAQSTable extends Migration
     public function up()
     {
         Schema::create('fg_f_a_q_s', function (Blueprint $table) {
-            $table->id();
+            $table->string('id', 150)->primary();
+            $table->enum('category', ['website', 'app', 'channel', 'general'])->default('general');
+            $table->string('question');
+            $table->text('answer');
             $table->timestamps();
         });
     }
