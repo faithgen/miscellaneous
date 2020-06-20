@@ -3,24 +3,27 @@
 namespace Faithgen\Miscellaneous\Services;
 
 use Faithgen\Miscellaneous\Models\Subscription;
-use Illuminate\Database\Eloquent\Model as ParentModel;
 use InnoFlash\LaraStart\Services\CRUDServices;
 
 class SubscriptionService extends CRUDServices
 {
-    private Subscription $subscription;
+    protected Subscription $subscription;
 
-    public function __construct(Subscription $subscription)
+    public function __construct()
     {
-        if (request()->has('subscription_id')) {
-            $this->subscription = Subscription::findOrFail(request('subscription_id'));
-        } else {
-            $this->subscription = $subscription;
+        $this->subscription = app(Subscription::class);
+
+        $subscriptionId = request()->route('subscription') ?? request('subscription_id');
+
+        if ($subscriptionId) {
+            $this->subscription = $this->subscription->resolveRouteBinding($subscriptionId);
         }
     }
 
     /**
      * Retrieves an instance of subscription.
+     *
+     * @return \Faithgen\Miscellaneous\Models\Subscription
      */
     public function getSubscription(): Subscription
     {
@@ -30,31 +33,12 @@ class SubscriptionService extends CRUDServices
     /**
      * Makes a list of fields that you do not want to be sent
      * to the create or update methods.
-     * Its mainly the fields that you do not have in the subscriptions table.
+     * Its mainly the fields that you do not have in the messages table.
+     *
+     * @return array
      */
     public function getUnsetFields(): array
     {
         return ['subscription_id'];
-    }
-
-    /**
-     * This returns the model found in the constructor
-     * or an instance of the class if no subscription is found.
-     */
-    public function getModel()
-    {
-        return $this->getSubscription();
-    }
-
-    /**
-     * Attaches a parent to the current subscription.
-     * You can delete this if you do not intent to create subscriptions from parent relationships.
-     */
-    public function getParentRelationship()
-    {
-        return [
-            ParentModel::class,
-            'relationshipName',
-        ];
     }
 }
