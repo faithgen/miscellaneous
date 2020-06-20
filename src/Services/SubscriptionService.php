@@ -32,7 +32,7 @@ class SubscriptionService extends CRUDServices
      * to the create or update methods.
      * Its mainly the fields that you do not have in the subscriptions table.
      */
-    public function getUnsetFields()
+    public function getUnsetFields(): array
     {
         return ['subscription_id'];
     }

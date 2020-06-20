@@ -18,7 +18,7 @@
     "require": {
         "php": "^7.2.5",
         "illuminate/support": "^6.0 | ^7.0",
-        "faithgen/sdk": "^2.0",
+        "faithgen/sdk": "^3.0",
         "illuminate/notifications": "^6.0 | ^7.0"
     },
     "require-dev": {

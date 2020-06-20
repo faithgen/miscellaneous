@@ -32,7 +32,7 @@ class ContactService extends CRUDServices
      * to the create or update methods.
      * Its mainly the fields that you do not have in the contacts table.
      */
-    public function getUnsetFields()
+    public function getUnsetFields(): array
     {
         return ['contact_id'];
     }
